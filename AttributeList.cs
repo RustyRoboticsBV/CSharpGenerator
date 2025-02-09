@@ -19,6 +19,16 @@
             return new(attributes);
         }
 
+        public static implicit operator AttributeList(Attribute attribute)
+        {
+            return new(new Attribute[1] { attribute });
+        }
+
+        public static implicit operator AttributeList((Name, ArgumentList) attribute)
+        {
+            return new(new Attribute[1] { new(attribute.Item1, attribute.Item2) });
+        }
+
         /* Public methods. */
         public override string Generate()
         {

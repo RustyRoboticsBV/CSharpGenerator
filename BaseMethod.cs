@@ -3,19 +3,17 @@
     /// <summary>
     /// A base class for all method declaration generators.
     /// </summary>
-    public abstract class BaseMethod<T> : Identifier where T : ModifierList, new()
+    public abstract class BaseMethod<T> : Member<T> where T : ModifierList, new()
     {
         /* Public properties. */
-        public T Modifiers { get; private set; }
         public Type ReturnType { get; private set; }
         public ParameterList Parameters { get; private set; }
         public Block Implementation { get; private set; }
 
         /* Constructors. */
         public BaseMethod(Summary summary, AttributeList attributes, T modifiers, Type returnType,
-            Name name, ParameterList parameters, Block implementation) : base(summary, attributes, name)
+            Name name, ParameterList parameters, Block implementation) : base(summary, attributes, modifiers, name)
         {
-            Modifiers = modifiers ?? new();
             ReturnType = returnType ?? new();
             Parameters = parameters ?? new();
             Implementation = implementation ?? new();

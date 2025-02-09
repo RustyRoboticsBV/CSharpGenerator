@@ -9,5 +9,11 @@
         public AbstractMethodModifiers() : this(null) { }
 
         public AbstractMethodModifiers(AccessModifier access) : base(access) { }
+
+        /* Conversion operators. */
+        public static implicit operator AbstractMethodModifiers(AccessModifier modifiers)
+        {
+            return new(modifiers);
+        }
     }
 }

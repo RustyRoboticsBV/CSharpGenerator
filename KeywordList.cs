@@ -18,5 +18,10 @@
         {
             return new(keywords);
         }
+
+        public static implicit operator KeywordList(Keyword keyword)
+        {
+            return new(new Keyword[1] { keyword });
+        }
     }
 }

@@ -18,5 +18,10 @@
         {
             return new(arguments);
         }
+
+        public static implicit operator ArgumentList(Argument argument)
+        {
+            return new(new Argument[1] { argument });
+        }
     }
 }

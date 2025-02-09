@@ -22,7 +22,7 @@
         protected abstract string Separator { get; }
 
         /* Constructors. */
-        public GeneratorList() : this(null) { }
+        public GeneratorList() : this(new T[0]) { }
 
         public GeneratorList(T[] elements)
         {

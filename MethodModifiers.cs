@@ -19,6 +19,12 @@
             Readonly = @readonly ?? new();
         }
 
+        /* Conversion operators. */
+        public static implicit operator MethodModifiers((AccessModifier, MethodOverrideModifier, ReadonlyModifier) modifiers)
+        {
+            return new(modifiers.Item1, modifiers.Item2, modifiers.Item3);
+        }
+
         /* Public methods. */
         public override string Generate()
         {
