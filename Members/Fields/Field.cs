@@ -3,14 +3,14 @@
     /// <summary>
     /// A field generator.
     /// </summary>
-    public sealed class Field : Member<FieldModifiers>
+    public sealed class Field : Member
     {
         /* Public properties. */
         public Type Type { get; private set; }
 
         /* Constructors. */
         public Field(Summary summary, AttributeList attributes, FieldModifiers modifiers, Type type, Name name)
-            : base(summary, attributes, modifiers, name)
+            : base(summary, attributes, modifiers ?? new(), name)
         {
             Type = type ?? new();
         }
