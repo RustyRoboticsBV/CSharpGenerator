@@ -23,6 +23,11 @@
             return new Block(contents);
         }
 
+        public static implicit operator string(Block block)
+        {
+            return block.Contents;
+        }
+
         /* Public methods. */
         public override string Generate()
         {

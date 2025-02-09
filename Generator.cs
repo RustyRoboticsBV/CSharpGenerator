@@ -6,11 +6,6 @@
     public abstract class Generator
     {
         /* Public methods. */
-        public override sealed string ToString()
-        {
-            return Generate();
-        }
-
         /// <summary>
         /// Generate C# code.
         /// </summary>

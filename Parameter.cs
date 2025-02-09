@@ -6,28 +6,45 @@
     public sealed class Parameter : Generator
     {
         /* Public properties. */
-        public string Name { get; private set; }
-        public string Value { get; private set; }
+        public Type Type { get; private set; }
+        public Name Name { get; private set; }
+        public Argument Default { get; private set; }
 
         /* Constructors. */
-        public Parameter() : this("", "") { }
+        public Parameter() : this("", "", "") { }
 
-        public Parameter(string name, string value)
+        public Parameter(Type type, Name name) : this(type, name, "") { }
+
+        public Parameter(Type type, Name name, Argument @default)
         {
-            Name = name ?? "";
-            Value = value ?? "";
+            Type = type ?? new();
+            Name = name ?? new();
+            Default = @default ?? new();
         }
 
-        /* Casting operators. */
-        public static implicit operator Parameter((string, string) parameter)
+        /* Conversion operators. */
+        public static implicit operator Parameter((Type, Name) parameter)
         {
             return new(parameter.Item1, parameter.Item2);
+        }
+
+        public static implicit operator Parameter((Type, Name, Argument) parameter)
+        {
+            return new(parameter.Item1, parameter.Item2, parameter.Item3);
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            return $"{Name} {Value}";
+            if (Type != "" && Name != "")
+            {
+                if (Default != "")
+                    return $"{Type.Generate()} {Name.Generate()} = {Default.Generate()}";
+                else
+                    return $"{Type.Generate()} {Name.Generate()}";
+            }
+            else
+                return "";
         }
     }
 }

@@ -17,16 +17,18 @@
         /// <summary>
         /// The name of the identifier.
         /// </summary>
-        public string Name { get; private set; }
+        public Name Name { get; private set; }
 
         /* Constructors. */
-        public Identifier(string name) : this(null, null, name) { }
+        public Identifier() : this(null, null, null) { }
 
-        public Identifier(Summary summary, AttributeList attributes, string name)
+        public Identifier(Name name) : this(null, null, name) { }
+
+        public Identifier(Summary summary, AttributeList attributes, Name name)
         {
             Summary = summary ?? new();
             Attributes = attributes ?? new();
-            Name = name ?? "";
+            Name = name ?? new();
         }
     }
 }

@@ -6,7 +6,7 @@
     public sealed class Keyword : Generator
     {
         /* Public properties. */
-        public string Name { get; private set; }
+        public Name Name { get; private set; }
 
         /* Constructors. */
         public Keyword() : this(null) { }
@@ -30,7 +30,7 @@
         /* Public methods. */
         public override string Generate()
         {
-            return Name;
+            return Name.Generate();
         }
     }
 }

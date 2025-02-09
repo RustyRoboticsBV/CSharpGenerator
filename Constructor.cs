@@ -22,7 +22,7 @@
         /* Public methods. */
         public override string Generate()
         {
-            return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}{Name}({Parameters})\n{Implementation}";
+            return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}{Name.Generate()}({Parameters.Generate()})\n{Implementation.Generate()}";
         }
     }
 }

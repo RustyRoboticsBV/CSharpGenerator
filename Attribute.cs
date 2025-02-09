@@ -9,18 +9,20 @@
         /// <summary>
         /// The name of the attribute.
         /// </summary>
-        public string Name { get; private set; }
+        public Name Name { get; private set; }
         /// <summary>
         /// The arguments of the attribute.
         /// </summary>
         public ArgumentList Arguments { get; private set; }
 
         /* Constructors. */
-        public Attribute(string name) : this(name, new()) { }
+        public Attribute() : this(null, null) { }
 
-        public Attribute(string name, ArgumentList arguments)
+        public Attribute(Name name) : this(name, null) { }
+
+        public Attribute(Name name, ArgumentList arguments)
         {
-            Name = name ?? "";
+            Name = name ?? new();
             Arguments = arguments ?? new();
         }
 
@@ -28,9 +30,9 @@
         public override string Generate()
         {
             if (Arguments.Length == 0)
-                return $"[{Name}]";
+                return $"[{Name.Generate()}]";
             else
-                return $"[{Name}({Arguments})]";
+                return $"[{Name.Generate()}({Arguments.Generate()})]";
         }
     }
 }

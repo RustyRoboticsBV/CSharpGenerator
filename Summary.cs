@@ -24,6 +24,11 @@
             return new(text);
         }
 
+        public static implicit operator string(Summary summary)
+        {
+            return summary.Text;
+        }
+
         /* Public methods. */
         public override string Generate()
         {

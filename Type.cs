@@ -6,20 +6,25 @@
     public sealed class Type : Generator
     {
         /* Public properties. */
-        public string Name { get; private set; }
+        public Name Name { get; private set; }
+        public bool Const { get; private set; }
 
         /* Constructors. */
         public Type() : this("") { }
 
-        public Type(string name)
+        public Type(Name name, bool @const = false)
         {
-            Name = name ?? "";
+            Name = name ?? new();
+            Const = @const;
         }
 
         /* Conversion operators. */
         public static implicit operator Type(string name)
         {
-            return new(name);
+            if (name.StartsWith("const "))
+                return new(name.Substring(6), true);
+            else
+                return new(name, false);
         }
 
         public static implicit operator string(Type type)
@@ -30,7 +35,10 @@
         /* Public methods. */
         public override string Generate()
         {
-            return Name;
+            if (Const)
+                return "const " + Name.Generate();
+            else
+                return Name.Generate();
         }
     }
 }

@@ -6,31 +6,31 @@
     public sealed class Argument : Generator
     {
         /* Public properties. */
-        public string Name { get; private set; }
+        public string Value { get; private set; }
 
         /* Constructors. */
         public Argument() : this("") { }
 
         public Argument(string name)
         {
-            Name = name ?? "";
+            Value = name ?? "";
         }
 
         /* Conversion operators. */
-        public static implicit operator Argument(string name)
+        public static implicit operator Argument(string value)
         {
-            return new(name);
+            return new(value);
         }
 
         public static implicit operator string(Argument argument)
         {
-            return argument.Name;
+            return argument.Value;
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            return Name;
+            return Value;
         }
     }
 }
