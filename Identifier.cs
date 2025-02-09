@@ -24,16 +24,9 @@
 
         public Identifier(Summary summary, AttributeList attributes, string name)
         {
-            if (attributes == null)
-                attributes = new();
-            if (summary == null)
-                summary = new();
-            if (name == null)
-                name = "";
-
-            Summary = summary;
-            Attributes = attributes;
-            Name = name;
+            Summary = summary ?? new();
+            Attributes = attributes ?? new();
+            Name = name ?? "";
         }
     }
 }

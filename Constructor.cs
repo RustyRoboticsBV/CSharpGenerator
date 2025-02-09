@@ -14,16 +14,9 @@
         public Constructor(Summary summary, AttributeList attributes, AccessModifier access, string name,
             ParameterList parameters, Block implementation) : base(summary, attributes, name)
         {
-            if (access == null)
-                Access = new();
-            if (parameters == null)
-                Parameters = new();
-            if (implementation == null)
-                implementation = new();
-
-            Access = access;
-            Parameters = parameters;
-            Implementation = implementation;
+            Access = access ?? new();
+            Parameters = parameters ?? new();
+            Implementation = implementation ?? new();
         }
 
         /* Public methods. */

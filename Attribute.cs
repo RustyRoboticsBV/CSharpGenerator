@@ -20,8 +20,8 @@
 
         public Attribute(string name, ArgumentList arguments)
         {
-            Name = name;
-            Arguments = arguments;
+            Name = name ?? "";
+            Arguments = arguments ?? new();
         }
 
         /* Public methods. */

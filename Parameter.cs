@@ -14,8 +14,8 @@
 
         public Parameter(string name, string value)
         {
-            Name = name;
-            Value = value;
+            Name = name ?? "";
+            Value = value ?? "";
         }
 
         /* Casting operators. */

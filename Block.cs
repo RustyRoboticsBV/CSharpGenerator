@@ -7,18 +7,20 @@
     {
         /* Public properties. */
         public string Contents { get; private set; }
-        public string Indentation { get; private set; }
+        public static int Indentation { get; set; } = 4;
 
         /* Constructors. */
         public Block() : this("") { }
 
-        public Block(string contents, int indentation = 4)
+        public Block(string contents)
         {
-            if (contents == null)
-                contents = "";
+            Contents = contents ?? "";
+        }
 
-            Contents = contents;
-            Indentation = new string(' ', indentation);
+        /* Conversion operators. */
+        public static implicit operator Block(string contents)
+        {
+            return new Block(contents);
         }
 
         /* Public methods. */
@@ -27,7 +29,10 @@
             if (Contents == "")
                 return "{ }";
             else
-                return $"{'{'}{Indentation}{Contents.Replace("\n", $"\n{Indentation}")}{'}'}";
+            {
+                string indentation = new string(' ', Indentation);
+                return $"{"{\n"}{indentation}{Contents.Replace("\n", $"\n{indentation}")}{"\n}"}";
+            }
         }
     }
 }

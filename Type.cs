@@ -1,30 +1,30 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// An keyword generator.
+    /// A type generator.
     /// </summary>
-    public sealed class Keyword : Generator
+    public sealed class Type : Generator
     {
         /* Public properties. */
         public string Name { get; private set; }
 
         /* Constructors. */
-        public Keyword() : this(null) { }
+        public Type() : this("") { }
 
-        public Keyword(string name)
+        public Type(string name)
         {
             Name = name ?? "";
         }
 
-        /* Casting operators. */
-        public static implicit operator Keyword(string name)
+        /* Conversion operators. */
+        public static implicit operator Type(string name)
         {
             return new(name);
         }
 
-        public static implicit operator string(Keyword keyword)
+        public static implicit operator string(Type type)
         {
-            return keyword.Name;
+            return type.Name;
         }
 
         /* Public methods. */

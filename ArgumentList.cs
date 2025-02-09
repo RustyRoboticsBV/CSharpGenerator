@@ -3,49 +3,20 @@
     /// <summary>
     /// An argument list generator, meant for a function call or attribute use.
     /// </summary>
-    public sealed class ArgumentList : Generator
+    public sealed class ArgumentList : GeneratorList<Argument>
     {
-        /* Public properties. */
-        /// <summary>
-        /// The arguments of the attribute.
-        /// </summary>
-        public string[] Arguments { get; private set; }
-        /// <summary>
-        /// The number of arguments.
-        /// </summary>
-        public int Length => Arguments.Length;
+        /* Protected methods. */
+        protected override string Separator => ", ";
 
         /* Constructors. */
         public ArgumentList() : this(null) { }
 
-        public ArgumentList(string[] arguments)
-        {
-            if (arguments == null)
-                arguments = new string[0];
-
-            Arguments = arguments;
-        }
+        public ArgumentList(Argument[] arguments) : base(arguments) { }
 
         /* Casting operators. */
-        public static implicit operator ArgumentList(string[] arguments)
+        public static implicit operator ArgumentList(Argument[] arguments)
         {
             return new(arguments);
-        }
-
-        /* Public methods. */
-        public override string Generate()
-        {
-            if (Arguments.Length == 0)
-                return "";
-            else
-            {
-                string argumentList = Arguments[0];
-                for (int i = 1; i < argumentList.Length; i++)
-                {
-                    argumentList += $", {Arguments[i]}";
-                }
-                return argumentList;
-            }
         }
     }
 }

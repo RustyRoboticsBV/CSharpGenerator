@@ -15,22 +15,15 @@
 
         public MethodModifiers(AccessModifier access, MethodOverrideModifier @override, ReadonlyModifier @readonly)
         {
-            if (access == null)
-                access = new();
-            if (@override == null)
-                @override = new();
-            if (@readonly == null)
-                @readonly = new();
-
-            Access = access;
-            Override = @override;
-            Readonly = @readonly;
+            Access = access ?? new();
+            Override = @override ?? new();
+            Readonly = @readonly ?? new();
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            return $"{Access.Generate(" ")}{Override.Generate(" ")}{Readonly.Generate(" ")}";
+            return $"{Access.Generate(" ")}{Override.Generate(" ")}{Readonly.Generate()}";
         }
     }
 }

@@ -5,8 +5,8 @@
     /// </summary>
     public sealed class KeywordList : GeneratorList<Keyword>
     {
-        /* Public properties. */
-        public override string Separator => ", ";
+        /* Protected properties. */
+        protected override string Separator => ", ";
 
         /* Constructors. */
         public KeywordList() : this(null) { }
@@ -17,11 +17,6 @@
         public static implicit operator KeywordList(Keyword[] keywords)
         {
             return new(keywords);
-        }
-
-        public static implicit operator Keyword[](KeywordList keywordList)
-        {
-            return keywordList.Elements;
         }
     }
 }

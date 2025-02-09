@@ -15,20 +15,24 @@
         /// </summary>
         public int Length => Elements.Length;
 
+        /* Protected properties. */
         /// <summary>
         /// The separator string that gets inserted between elements.
         /// </summary>
-        public abstract string Separator { get; }
+        protected abstract string Separator { get; }
 
         /* Constructors. */
         public GeneratorList() : this(null) { }
 
         public GeneratorList(T[] elements)
         {
-            if (elements == null)
-                elements = new T[0];
+            Elements = elements ?? new T[0];
+        }
 
-            Elements = elements;
+        /* Casting operators. */
+        public static implicit operator T[](GeneratorList<T> list)
+        {
+            return list.Elements;
         }
 
         /* Public methods. */
@@ -39,7 +43,7 @@
             else
             {
                 string code = Elements[0].Generate();
-                for (int i = 1; i < code.Length; i++)
+                for (int i = 1; i < Length; i++)
                 {
                     code += $"{Separator}{Elements[i].Generate()}";
                 }

@@ -3,43 +3,29 @@
     /// <summary>
     /// A generator for attribute lists.
     /// </summary>
-    public sealed class AttributeList : Generator
+    public sealed class AttributeList : GeneratorList<Attribute>
     {
-        /* Public properties. */
-        /// <summary>
-        /// The attributes in the list.
-        /// </summary>
-        public Attribute[] Attributes { get; private set; }
-        /// <summary>
-        /// The number of attributes in the list.
-        /// </summary>
-        public int Length => Attributes.Length;
+        /* Protected properties. */
+        protected override string Separator => ", ";
 
         /* Constructors. */
         public AttributeList() : this(null) { }
 
-        public AttributeList(Attribute[] attributes)
-        {
-            if (attributes == null)
-                attributes = new Attribute[0];
+        public AttributeList(Attribute[] attributes) : base(attributes) { }
 
-            Attributes = attributes;
+        /* Conversion operators. */
+        public static implicit operator AttributeList(Attribute[] attributes)
+        {
+            return new(attributes);
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            if (Length == 0)
+            if (Elements.Length == 0)
                 return "";
             else
-            {
-                string code = Attributes[0].Generate();
-                for (int i = 1; i < Length; i++)
-                {
-                    code += $", {Attributes[i].Generate()}";
-                }
-                return $"[{code.Replace("[", "").Replace("]", "")}]";
-            }
+                return $"[{base.Generate().Replace("[", "").Replace("]", "")}]";
         }
     }
 }

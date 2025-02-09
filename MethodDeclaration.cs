@@ -7,29 +7,24 @@
     {
         /* Public properties. */
         public MethodModifiers Modifiers { get; private set; }
+        public Type ReturnType { get; private set; }
         public ParameterList Parameters { get; private set; }
         public Block Implementation { get; private set; }
 
         /* Constructors. */
-        public MethodDeclaration(Summary summary, AttributeList attributes, MethodModifiers modifiers, string name,
-            ParameterList parameters, Block implementation) : base(summary, attributes, name)
+        public MethodDeclaration(Summary summary, AttributeList attributes, MethodModifiers modifiers, Type returnType,
+            string name, ParameterList parameters, Block implementation) : base(summary, attributes, name)
         {
-            if (modifiers == null)
-                modifiers = new();
-            if (parameters == null)
-                parameters = new();
-            if (implementation == null)
-                implementation = new();
-
-            Modifiers = modifiers;
-            Parameters = parameters;
-            Implementation = implementation;
+            Modifiers = modifiers ?? new();
+            ReturnType = returnType ?? new();
+            Parameters = parameters ?? new();
+            Implementation = implementation ?? new();
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Modifiers.Generate(" ")}{Name}({Parameters})\n{Implementation}";
+            return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Modifiers.Generate(" ")}{ReturnType.Generate(" ")}{Name}({Parameters})\n{Implementation}";
         }
     }
 }
