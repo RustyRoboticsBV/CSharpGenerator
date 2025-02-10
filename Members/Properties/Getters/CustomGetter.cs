@@ -19,7 +19,7 @@
         /* Public methods. */
         public override string Generate()
         {
-            if (Implementation == "")
+            if (Implementation.Contents == "")
                 return "get;";
             else
                 return $"get\n{Implementation.Generate()}";

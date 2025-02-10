@@ -29,17 +29,17 @@
                 case AccessKeywordID.Public:
                     return "public";
                 case AccessKeywordID.Internal:
-                    return"internal";
+                    return "internal";
                 case AccessKeywordID.Protected:
-                    return"protected";
+                    return "protected";
                 case AccessKeywordID.Private:
-                    return"private";
+                    return "private";
                 case AccessKeywordID.ProtectedInternal:
-                    return"protected internal";
+                    return "protected internal";
                 case AccessKeywordID.PrivateProtected:
-                    return"private protected";
+                    return "private protected";
                 case AccessKeywordID.File:
-                    return"file";
+                    return "file";
                 default:
                     return "";
             }

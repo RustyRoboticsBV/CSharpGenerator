@@ -1,17 +1,17 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// A summary comment generator.
+    /// A delimited comment generator.
     /// </summary>
-    public sealed class Summary : Comment
+    public sealed class DelimitedComment : Comment
     {
         /* Constructors. */
-        public Summary() : this(null) { }
+        public DelimitedComment() : this(null) { }
 
-        public Summary(string text) : base(text) { }
+        public DelimitedComment(string text) : base(text) { }
 
         /* Conversion operators. */
-        public static implicit operator Summary(string text)
+        public static implicit operator DelimitedComment(string text)
         {
             return new(text);
         }
@@ -22,7 +22,7 @@
             if (Text == "")
                 return "";
             else
-                return $"/// <summary>\n/// {Text.Replace("\n", "\n/// ")}\n/// </summary>";
+                return $"/* {Text.Replace("\n", "\n   ")} */";
         }
     }
 }

@@ -24,6 +24,11 @@
             return new(new Attribute[1] { attribute });
         }
 
+        public static implicit operator AttributeList(string attribute)
+        {
+            return new(new Attribute[1] { new Attribute(attribute) });
+        }
+
         public static implicit operator AttributeList((Name, ArgumentList) attribute)
         {
             return new(new Attribute[1] { new(attribute.Item1, attribute.Item2) });

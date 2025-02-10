@@ -21,7 +21,7 @@
 
         public static implicit operator ParameterList(Parameter parameter)
         {
-            return new(new Parameter[1] {parameter });
+            return new(new Parameter[1] { parameter });
         }
     }
 }
