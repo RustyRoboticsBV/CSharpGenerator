@@ -1,23 +1,15 @@
-﻿using System;
-
-namespace CSharpGenerator
+﻿namespace CSharpGenerator
 {
     /// <summary>
     /// A generator choice.
     /// </summary>
-    public abstract class GeneratorChoice<T> : Generator where T : Enum
+    public abstract class GeneratorChoice<T> : Generator where T : System.Enum
     {
         /* Public properties. */
         /// <summary>
         /// The generator id.
         /// </summary>
-        public T ID { get; private set; }
-
-        /* Constructors. */
-        public GeneratorChoice(T id)
-        {
-            ID = id;
-        }
+        public T ID { get; set; } = default;
 
         /* Public methods. */
         public override sealed string Generate()

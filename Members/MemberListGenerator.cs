@@ -3,7 +3,7 @@
     /// <summary>
     /// A generator list generator.
     /// </summary>
-    public abstract class GeneratorList<T> : Generator where T : Generator
+    public abstract class MemberList<T> : Generator where T : IMember
     {
         /* Public properties. */
         /// <summary>
@@ -26,18 +26,18 @@
         /// <summary>
         /// The separator string that gets inserted between elements.
         /// </summary>
-        protected abstract string Separator { get; }
+        protected virtual string Separator => "\n";
 
         /* Constructors. */
-        public GeneratorList() : this(new T[0]) { }
+        public MemberList() : this(new T[0]) { }
 
-        public GeneratorList(T[] elements)
+        public MemberList(T[] elements)
         {
             Elements = elements ?? new T[0];
         }
 
         /* Casting operators. */
-        public static implicit operator T[](GeneratorList<T> list)
+        public static implicit operator T[](MemberList<T> list)
         {
             return list.Elements;
         }
