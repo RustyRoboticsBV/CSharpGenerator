@@ -16,7 +16,7 @@
         {
             if (Type != "" && Name != "")
             {
-                if (Default.Value != "")
+                if (Default.Value != "" && Modifier.ID != ParameterModifierID.Out && Modifier.ID != ParameterModifierID.Ref)
                     return $"{Modifier.Generate(" ")}{Type} {Name} = {Default.Generate()}";
                 else
                     return $"{Modifier.Generate(" ")}{Type} {Name}";
