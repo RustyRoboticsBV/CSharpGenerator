@@ -20,7 +20,7 @@
         /* Public methods. */
         public override string Generate()
         {
-            return $"#include {Namespace};";
+            return $"using {Namespace};";
         }
     }
 }

@@ -11,7 +11,17 @@
         /* Casting operators. */
         public static implicit operator MethodImplementation(string code)
         {
-            return new Code() { Text = code };
+            return (Code)code;
+        }
+
+        public static implicit operator MethodImplementation(string[] code)
+        {
+            Code[] result = new Code[code.Length];
+            for (int i = 0; i < code.Length; i++)
+            {
+                result[i] = code[i];
+            }
+            return result;
         }
 
         public static implicit operator MethodImplementation(Code code)
@@ -30,12 +40,16 @@
         /* Public methods. */
         public override string Generate()
         {
-            string code = base.Generate();
-            Block block = new()
+            string code = base.Generate().Trim();
+            if (code == "")
+                return "";
+            else if (code.StartsWith("=>"))
+                return code;
+            else
             {
-                Contents = new Code() { Text = code }
-            };
-            return block.Generate();
+                Block block = code;
+                return block.Generate();
+            }
         }
     }
 }

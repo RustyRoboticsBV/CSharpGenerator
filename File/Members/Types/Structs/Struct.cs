@@ -22,7 +22,7 @@
                 Contents = Members
             };
             return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}{Modifier.Generate(" ")}"
-                + $"{Name}{Inheritance.Generate()}\n{contents.Generate()}";
+                + $"struct {Name}{Inheritance.Generate()}\n{contents.Generate()}";
         }
     }
 }

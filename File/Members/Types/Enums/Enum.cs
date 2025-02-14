@@ -21,7 +21,7 @@
                 Contents = Members
             };
             return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}"
-                + $"{Name}{Inheritance.Generate()}\n{contents.Generate()}";
+                + $"enum {Name}{Inheritance.Generate()}\n{contents.Generate()}";
         }
     }
 }

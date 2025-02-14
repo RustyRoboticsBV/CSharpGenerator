@@ -5,6 +5,12 @@
     /// </summary>
     public abstract class Generator
     {
+        /* Public methods */
+        /// <summary>
+        /// Whether or not this generator generates to the empty string.
+        /// </summary>
+        public bool IsEmpty => Generate() == "";
+
         /* Public methods. */
         /// <summary>
         /// Generate C# code.

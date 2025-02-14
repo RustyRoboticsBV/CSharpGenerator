@@ -12,7 +12,15 @@
         /* Casting operators. */
         public static implicit operator Block(string contents)
         {
-            return new() { Contents = new Code() { Text = contents } };
+            return (Code)contents;
+        }
+
+        public static implicit operator Block(Code contents)
+        {
+            return new()
+            {
+                Contents = contents
+            };
         }
 
         /* Public methods. */
