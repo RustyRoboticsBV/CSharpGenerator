@@ -3,7 +3,7 @@
     /// <summary>
     /// A method override modifier keyword id.
     /// </summary>
-    public enum MethodModifierKeywordID
+    public enum MethodModifierID
     {
         None,
         Static,

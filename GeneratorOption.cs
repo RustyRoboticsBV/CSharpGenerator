@@ -22,7 +22,7 @@
         }
 
         /* Public methods. */
-        public override sealed string Generate()
+        public override string Generate()
         {
             if (Enabled)
                 return Generator.Generate();

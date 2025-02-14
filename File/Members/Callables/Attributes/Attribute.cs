@@ -3,7 +3,7 @@
     /// <summary>
     /// A generator for adding an attribute to an object.
     /// </summary>
-    public sealed class Attribute : Generator
+    public class Attribute : Generator
     {
         /* Public properties. */
         /// <summary>

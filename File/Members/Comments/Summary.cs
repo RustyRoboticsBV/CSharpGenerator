@@ -3,7 +3,7 @@
     /// <summary>
     /// A summary comment generator.
     /// </summary>
-    public sealed class Summary : Comment
+    public class Summary : Comment
     {
         /* Casting operators. */
         public static implicit operator Summary(string text)

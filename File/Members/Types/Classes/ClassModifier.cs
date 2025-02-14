@@ -3,25 +3,25 @@
     /// <summary>
     /// A class modifier generator.
     /// </summary>
-    public sealed class ClassModifier : GeneratorChoice<ClassModifierKeywordID>
+    public class ClassModifier : GeneratorChoice<ClassModifierID>
     {
         /* Casting operators. */
-        public static implicit operator ClassModifier(ClassModifierKeywordID keywordID)
+        public static implicit operator ClassModifier(ClassModifierID ID)
         {
             return new()
             {
-                ID = keywordID
+                ID = ID
             };
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(ClassModifierKeywordID keywordID)
+        protected override Keyword GetKeyword(ClassModifierID ID)
         {
-            switch (keywordID)
+            switch (ID)
             {
-                case ClassModifierKeywordID.Static:
+                case ClassModifierID.Static:
                     return "static";
-                case ClassModifierKeywordID.Abstract:
+                case ClassModifierID.Abstract:
                     return "abstract";
                 default:
                     return "";

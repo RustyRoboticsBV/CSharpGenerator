@@ -3,7 +3,7 @@
     /// <summary>
     /// A code block generator.
     /// </summary>
-    public sealed class Block : Generator
+    public class Block : Generator
     {
         /* Public properties. */
         public Generator Contents { get; set; }

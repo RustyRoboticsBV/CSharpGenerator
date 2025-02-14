@@ -3,13 +3,13 @@
     /// <summary>
     /// A parameter generator, meant for method declaration.
     /// </summary>
-    public sealed class Parameter : Generator
+    public class Parameter : Generator
     {
         /* Public properties. */
-        public PassKeyword Pass { get; set; } = PassKeywordID.None;
+        public ParameterModifier Modifier { get; set; } = ParameterModifierID.None;
         public string Type { get; set; } = "void";
         public string Name { get; set; } = "";
-        public Argument Default { get; set; }
+        public Argument Default { get; set; } = new();
 
         /* Public methods. */
         public override string Generate()
@@ -17,9 +17,9 @@
             if (Type != "" && Name != "")
             {
                 if (Default.Value != "")
-                    return $"{Pass.Generate(" ")}{Type} {Name} = {Default.Generate()}";
+                    return $"{Modifier.Generate(" ")}{Type} {Name} = {Default.Generate()}";
                 else
-                    return $"{Pass.Generate(" ")}{Type} {Name}";
+                    return $"{Modifier.Generate(" ")}{Type} {Name}";
             }
             else
                 return "";

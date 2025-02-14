@@ -3,7 +3,7 @@
     /// <summary>
     /// A generator for attribute lists.
     /// </summary>
-    public sealed class AttributeList : GeneratorList<Attribute>
+    public class AttributeList : GeneratorList<Attribute>
     {
         /* Protected properties. */
         protected override string Separator => ", ";

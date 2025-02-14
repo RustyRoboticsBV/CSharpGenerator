@@ -11,7 +11,7 @@
         public MethodImplementation Implementation { get; set; } = "";
 
         /* Public methods. */
-        public override sealed string Generate()
+        public override string Generate()
         {
             return $"{Summary.Generate("\n")}~{TypeName}()\n{Implementation.Generate()}";
         }

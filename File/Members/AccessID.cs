@@ -3,7 +3,7 @@
     /// <summary>
     /// An access modifier keyword id.
     /// </summary>
-    public enum AccessKeywordID
+    public enum AccessID
     {
         None,
         Public,

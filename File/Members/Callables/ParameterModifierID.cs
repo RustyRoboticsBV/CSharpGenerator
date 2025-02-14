@@ -3,7 +3,7 @@
     /// <summary>
     /// A parameter pass keyword.
     /// </summary>
-    public enum PassKeywordID
+    public enum ParameterModifierID
     {
         None,
         In,

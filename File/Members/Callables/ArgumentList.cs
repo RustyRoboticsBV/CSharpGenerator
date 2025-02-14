@@ -3,7 +3,7 @@
     /// <summary>
     /// An argument list generator, meant for a function call or attribute use.
     /// </summary>
-    public sealed class ArgumentList : GeneratorList<Argument>
+    public class ArgumentList : GeneratorList<Argument>
     {
         /* Protected methods. */
         protected override string Separator => ", ";

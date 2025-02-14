@@ -3,7 +3,7 @@
     /// <summary>
     /// A struct modifier keyword ID.
     /// </summary>
-    public enum StructModifierKeywordID
+    public enum StructModifierID
     {
         None,
         Static,

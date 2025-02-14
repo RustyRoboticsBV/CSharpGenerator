@@ -3,7 +3,7 @@
     /// <summary>
     /// A parameter list generator, meant for a method declarations.
     /// </summary>
-    public sealed class ParameterList : GeneratorList<Parameter>
+    public class ParameterList : GeneratorList<Parameter>
     {
         /* Protected methods. */
         protected override string Separator => ", ";

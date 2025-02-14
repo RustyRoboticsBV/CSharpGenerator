@@ -3,7 +3,7 @@
     /// <summary>
     /// A class modifier keyword ID.
     /// </summary>
-    public enum ClassModifierKeywordID
+    public enum ClassModifierID
     {
         None,
         Static,

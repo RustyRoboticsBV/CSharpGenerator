@@ -6,7 +6,7 @@
     public abstract class ModifierList : Generator
     {
         /* Public properties. */
-        public AccessModifier Access { get; set; } = AccessKeywordID.Public;
+        public AccessModifier Access { get; set; } = AccessID.Public;
 
         /* Public methods. */
         public override string Generate()

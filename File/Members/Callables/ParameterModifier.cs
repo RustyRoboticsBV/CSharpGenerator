@@ -3,27 +3,27 @@
     /// <summary>
     /// A parameter/argument pass keyword generator.
     /// </summary>
-    public sealed class PassKeyword : GeneratorChoice<PassKeywordID>
+    public class ParameterModifier : GeneratorChoice<ParameterModifierID>
     {
         /* Casting operators. */
-        public static implicit operator PassKeyword(PassKeywordID keywordID)
+        public static implicit operator ParameterModifier(ParameterModifierID ID)
         {
             return new()
             {
-                ID = keywordID
+                ID = ID
             };
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(PassKeywordID keywordID)
+        protected override Keyword GetKeyword(ParameterModifierID ID)
         {
-            switch (keywordID)
+            switch (ID)
             {
-                case PassKeywordID.In:
+                case ParameterModifierID.In:
                     return "in";
-                case PassKeywordID.Out:
+                case ParameterModifierID.Out:
                     return "out";
-                case PassKeywordID.Ref:
+                case ParameterModifierID.Ref:
                     return "ref";
                 default:
                     return "";

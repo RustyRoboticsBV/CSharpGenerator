@@ -8,7 +8,7 @@
         /* Public properties. */
         public Summary Summary { get; set; } = "";
         public AttributeList Attributes { get; set; } = new();
-        public AccessModifier Access { get; set; } = AccessKeywordID.Public;
+        public AccessModifier Access { get; set; } = AccessID.Public;
         public string Name { get; set; } = "";
         public EnumInheritance Inheritance { get; set; } = new();
         public EnumMemberList Members { get; set; } = new();

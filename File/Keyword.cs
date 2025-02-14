@@ -3,7 +3,7 @@
     /// <summary>
     /// A keyword generator.
     /// </summary>
-    public sealed class Keyword : Generator
+    public class Keyword : Generator
     {
         /* Public properties. */
         public string Name { get; set; }

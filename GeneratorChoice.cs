@@ -12,7 +12,7 @@
         public T ID { get; set; } = default;
 
         /* Public methods. */
-        public override sealed string Generate()
+        public override string Generate()
         {
             return GetKeyword(ID).Generate();
         }

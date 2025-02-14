@@ -3,39 +3,39 @@
     /// <summary>
     /// A method modifier generator.
     /// </summary>
-    public sealed class MethodModifier : GeneratorChoice<MethodModifierKeywordID>
+    public class MethodModifier : GeneratorChoice<MethodModifierID>
     {
         /* Casting operators. */
-        public static implicit operator MethodModifier(MethodModifierKeywordID keywordID)
+        public static implicit operator MethodModifier(MethodModifierID ID)
         {
             return new()
             {
-                ID = keywordID
+                ID = ID
             };
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(MethodModifierKeywordID keywordID)
+        protected override Keyword GetKeyword(MethodModifierID ID)
         {
-            switch (keywordID)
+            switch (ID)
             {
-                case MethodModifierKeywordID.Static:
+                case MethodModifierID.Static:
                     return "static";
-                case MethodModifierKeywordID.StaticNew:
+                case MethodModifierID.StaticNew:
                     return "static new";
-                case MethodModifierKeywordID.Abstract:
+                case MethodModifierID.Abstract:
                     return "abstract";
-                case MethodModifierKeywordID.Virtual:
+                case MethodModifierID.Virtual:
                     return "virtual";
-                case MethodModifierKeywordID.Override:
+                case MethodModifierID.Override:
                     return "override";
-                case MethodModifierKeywordID.OverrideSealed:
+                case MethodModifierID.OverrideSealed:
                     return "override sealed";
-                case MethodModifierKeywordID.New:
+                case MethodModifierID.New:
                     return "new";
-                case MethodModifierKeywordID.NewVirtual:
+                case MethodModifierID.NewVirtual:
                     return "new virtual";
-                case MethodModifierKeywordID.Readonly:
+                case MethodModifierID.Readonly:
                     return "readonly";
                 default:
                     return "";

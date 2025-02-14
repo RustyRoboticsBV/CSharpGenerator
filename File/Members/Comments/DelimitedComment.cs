@@ -3,7 +3,7 @@
     /// <summary>
     /// A delimited comment generator.
     /// </summary>
-    public sealed class DelimitedComment : Comment
+    public class DelimitedComment : Comment
     {
         /* Casting operators. */
         public static implicit operator DelimitedComment(string text)

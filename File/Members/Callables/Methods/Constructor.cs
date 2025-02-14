@@ -7,14 +7,14 @@
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";
-        public AccessModifier Access { get; set; } = AccessKeywordID.Public;
+        public AccessModifier Access { get; set; } = AccessID.Public;
         public string TypeName { get; set; } = "Name";
         public ParameterList Parameters { get; set; } = new();
 
         public MethodImplementation Implementation { get; set; } = "";
 
         /* Public methods. */
-        public override sealed string Generate()
+        public override string Generate()
         {
             return $"{Summary.Generate("\n")}{Access.Generate(" ")}{TypeName}({Parameters.Generate()})"
                 + $"\n{Implementation.Generate()}";

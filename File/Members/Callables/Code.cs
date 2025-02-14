@@ -1,26 +1,26 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// An argument generator.
+    /// A code generator.
     /// </summary>
-    public class Argument : Generator
+    public class Code : Generator
     {
         /* Public properties. */
-        public string Value { get; set; } = "";
+        public string Text { get; set; } = "";
 
         /* Casting operators. */
-        public static implicit operator Argument(string value)
+        public static implicit operator Code(string text)
         {
             return new()
             {
-                Value = value
+                Text = text
             };
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            return Value;
+            return Text;
         }
     }
 }

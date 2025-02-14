@@ -3,35 +3,35 @@
     /// <summary>
     /// An access modifier generator.
     /// </summary>
-    public sealed class AccessModifier : GeneratorChoice<AccessKeywordID>
+    public class AccessModifier : GeneratorChoice<AccessID>
     {
         /* Casting operators. */
-        public static implicit operator AccessModifier(AccessKeywordID keywordID)
+        public static implicit operator AccessModifier(AccessID ID)
         {
             return new()
             {
-                ID = keywordID
+                ID = ID
             };
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(AccessKeywordID keywordID)
+        protected override Keyword GetKeyword(AccessID ID)
         {
-            switch (keywordID)
+            switch (ID)
             {
-                case AccessKeywordID.Public:
+                case AccessID.Public:
                     return "public";
-                case AccessKeywordID.Internal:
+                case AccessID.Internal:
                     return "internal";
-                case AccessKeywordID.Protected:
+                case AccessID.Protected:
                     return "protected";
-                case AccessKeywordID.Private:
+                case AccessID.Private:
                     return "private";
-                case AccessKeywordID.ProtectedInternal:
+                case AccessID.ProtectedInternal:
                     return "protected internal";
-                case AccessKeywordID.PrivateProtected:
+                case AccessID.PrivateProtected:
                     return "private protected";
-                case AccessKeywordID.File:
+                case AccessID.File:
                     return "file";
                 default:
                     return "";
