@@ -1,18 +1,17 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// A class generator.
+    /// An enum generator.
     /// </summary>
-    public class Class : Generator, IClassMember, IStructMember
+    public class Enum : Generator, IClassMember, IStructMember, INamespaceMember, IFileMember
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";
         public AttributeList Attributes { get; set; } = new();
         public AccessModifier Access { get; set; } = AccessKeywordID.Public;
-        public ClassModifier Modifier { get; set; } = ClassModifierKeywordID.None;
         public string Name { get; set; } = "";
-        public ClassInheritance Inheritance { get; set; } = new();
-        public ClassMemberList Members { get; set; } = new();
+        public EnumInheritance Inheritance { get; set; } = new();
+        public EnumMemberList Members { get; set; } = new();
 
         /* Public methods. */
         public override string Generate()
@@ -21,7 +20,7 @@
             {
                 Contents = Members
             };
-            return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}{Modifier.Generate(" ")}"
+            return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}"
                 + $"{Name}{Inheritance.Generate()}\n{contents.Generate()}";
         }
     }

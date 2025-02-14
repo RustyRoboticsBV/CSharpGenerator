@@ -3,7 +3,7 @@
     /// <summary>
     /// A struct generator.
     /// </summary>
-    public class Struct : Generator, IClassMember, IStructMember
+    public class Struct : Generator, IClassMember, IStructMember, INamespaceMember, IFileMember
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";
