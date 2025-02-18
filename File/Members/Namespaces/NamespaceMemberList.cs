@@ -8,6 +8,8 @@
         /* Constructors. */
         public NamespaceMemberList() : base() { }
 
+        public NamespaceMemberList(NamespaceMemberList other) : base(other) { }
+
         public NamespaceMemberList(INamespaceMember member) : base(member) { }
 
         public NamespaceMemberList(INamespaceMember[] members) : base(members) { }
@@ -20,7 +22,7 @@
 
         public static implicit operator NamespaceMemberList(Namespace member)
         {
-            return new(member);
+            return new((INamespaceMember)member);
         }
 
         public static implicit operator NamespaceMemberList(Namespace[] members)
@@ -30,7 +32,7 @@
 
         public static implicit operator NamespaceMemberList(Class member)
         {
-            return new(member);
+            return new((INamespaceMember)member);
         }
 
         public static implicit operator NamespaceMemberList(Class[] members)
@@ -40,7 +42,7 @@
 
         public static implicit operator NamespaceMemberList(Struct member)
         {
-            return new(member);
+            return new((INamespaceMember)member);
         }
 
         public static implicit operator NamespaceMemberList(Struct[] members)
@@ -50,7 +52,7 @@
 
         public static implicit operator NamespaceMemberList(Interface member)
         {
-            return new(member);
+            return new((INamespaceMember)member);
         }
 
         public static implicit operator NamespaceMemberList(Interface[] members)
@@ -60,7 +62,7 @@
 
         public static implicit operator NamespaceMemberList(Enum member)
         {
-            return new(member);
+            return new((INamespaceMember)member);
         }
 
         public static implicit operator NamespaceMemberList(Enum[] members)
@@ -70,12 +72,18 @@
 
         public static implicit operator NamespaceMemberList(Delegate member)
         {
-            return new(member);
+            return new((INamespaceMember)member);
         }
 
         public static implicit operator NamespaceMemberList(Delegate[] members)
         {
             return new(members);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new NamespaceMemberList(this);
         }
     }
 }

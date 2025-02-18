@@ -8,6 +8,8 @@
         /* Constructors. */
         public InterfaceMemberList() : base() { }
 
+        public InterfaceMemberList(InterfaceMemberList other) : base(other) { }
+
         public InterfaceMemberList(IInterfaceMember member) : base(member) { }
 
         public InterfaceMemberList(IInterfaceMember[] members) : base(members) { }
@@ -31,6 +33,12 @@
         public static implicit operator InterfaceMemberList(Method[] members)
         {
             return new(members);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new InterfaceMemberList(this);
         }
     }
 }

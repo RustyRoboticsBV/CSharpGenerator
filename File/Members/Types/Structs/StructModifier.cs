@@ -5,13 +5,25 @@
     /// </summary>
     public class StructModifier : GeneratorChoice<StructModifierID>
     {
+        /* Constructors. */
+        public StructModifier() : base() { }
+
+        public StructModifier(StructModifier other) : base(other) { }
+
+        public StructModifier(StructModifierID id) : base(id) { }
+
+        public StructModifier(string id) : base(id) { }
+
         /* Casting operators. */
-        public static implicit operator StructModifier(StructModifierID ID)
+        public static implicit operator StructModifier(StructModifierID id)
         {
-            return new()
-            {
-                ID = ID
-            };
+            return new(id);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new StructModifier(this);
         }
 
         /* Protected methods. */

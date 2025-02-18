@@ -8,14 +8,28 @@ namespace CSharpGenerator
     public class BinaryMathOperator : Operator
     {
         /* Public properties. */
-        public Summary Summary { get; set; } = "";
         public string ReturnType { get; set; } = "int";
         public BinaryMathOperatorID Operator { get; set; } = BinaryMathOperatorID.Add;
         public Parameter Operand1 { get; set; } = new();
         public Parameter Operand2 { get; set; } = new();
-        public MethodImplementation Implementation { get; set; } = "";
+
+        /* Constructors. */
+        public BinaryMathOperator() : base() { }
+
+        public BinaryMathOperator(BinaryMathOperator other) : base()
+        {
+            ReturnType = other.ReturnType;
+            Operator = other.Operator;
+            Operand1 = new(other.Operand1);
+            Operand2 = new(other.Operand2);
+        }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new BinaryMathOperator(this);
+        }
+
         public override string Generate()
         {
             ParameterList parameters = new Parameter[] { Operand1, Operand2 };

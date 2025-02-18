@@ -11,7 +11,23 @@
         public string Name { get; set; } = "";
         public Argument Default { get; set; } = new();
 
+        /* Constructors. */
+        public Parameter() { }
+
+        public Parameter(Parameter other)
+        {
+            Modifier = new(other.Modifier);
+            Type = other.Type;
+            Name = other.Name;
+            Default = new(other.Default);
+        }
+
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Parameter(this);
+        }
+
         public override string Generate()
         {
             if (Type != "" && Name != "")

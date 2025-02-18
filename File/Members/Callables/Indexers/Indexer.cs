@@ -14,7 +14,26 @@
         public Getter Getter { get; set; } = new();
         public Setter Setter { get; set; } = new();
 
+        /* Constructors. */
+        public Indexer() { }
+
+        public Indexer(Indexer other)
+        {
+            Summary = new(other.Summary);
+            Attributes = new(other.Attributes);
+            Access = new(other.Access);
+            ReturnType = other.ReturnType;
+            Parameters = new(other.Parameters);
+            Getter = new(other.Getter);
+            Setter = new(other.Setter);
+        }
+
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Indexer(this);
+        }
+
         public override string Generate()
         {
             // Generate implementation.

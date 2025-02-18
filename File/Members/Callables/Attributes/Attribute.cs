@@ -15,6 +15,15 @@
         /// </summary>
         public ArgumentList Arguments { get; set; } = new();
 
+        /* Constructors. */
+        public Attribute() { }
+
+        public Attribute(Attribute other)
+        {
+            Name = other.Name;
+            Arguments = new(other.Arguments);
+        }
+
         /* Casting operators. */
         public static implicit operator Attribute(string name)
         {
@@ -34,6 +43,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Attribute(this);
+        }
+
         public override string Generate()
         {
             if (Arguments.Length == 0)

@@ -8,6 +8,19 @@
         /* Public properties. */
         public string Text { get; set; } = "";
 
+        /* Constructors. */
+        public Code() { }
+
+        public Code(Code other)
+        {
+            Text = other.Text;
+        }
+
+        public Code(string text)
+        {
+            Text = text;
+        }
+
         /* Casting operators. */
         public static implicit operator Code(string text)
         {
@@ -18,6 +31,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Code(this);
+        }
+
         public override string Generate()
         {
             return Text;

@@ -29,9 +29,7 @@ All types and members can be annotated with attributes and a summary. Inheritanc
 The generator does NOT support method implementation generation - these must be provided by the user. The generator makes no attempt to check the semantic correctness of the generated program.
 
 ### TODO
-- Static constructors
 - Constructor calling from other constructors
-- The "where" keyword
 - Preprocessor directives
 - Records
 

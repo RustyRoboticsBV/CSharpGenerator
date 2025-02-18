@@ -15,7 +15,27 @@
         public Setter Setter { get; set; } = new();
         public string Default { get; set; } = "";
 
+        /* Constructors. */
+        public Property() { }
+
+        public Property(Property other)
+        {
+            Summary = new(other.Summary);
+            Attributes = new(other.Attributes);
+            Access = new(other.Access);
+            Type = other.Type;
+            Name = other.Name;
+            Getter = new(other.Getter);
+            Setter = new(other.Setter);
+            Default = other.Default;
+        }
+
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Property(this);
+        }
+
         public override string Generate()
         {
             // Generate implementation.

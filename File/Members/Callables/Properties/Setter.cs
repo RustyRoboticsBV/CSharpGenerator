@@ -6,8 +6,19 @@
     public class Setter : Generator
     {
         /* Public properties. */
+        public static Setter None => null;
+
         public AccessModifier Access { get; set; } = AccessID.None;
         public MethodImplementation Implementation { get; set; } = "";
+
+        /* Constructors. */
+        public Setter() { }
+
+        public Setter(Setter other)
+        {
+            Access = new(other.Access);
+            Implementation = new(other.Implementation);
+        }
 
         /* Casting operators. */
         public static implicit operator Setter(string fieldName)
@@ -38,6 +49,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Setter(this);
+        }
+
         public override string Generate()
         {
             if (Implementation == null)

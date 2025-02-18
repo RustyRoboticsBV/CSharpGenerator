@@ -8,6 +8,8 @@
         /* Constructors. */
         public StructMemberList() : base() { }
 
+        public StructMemberList(StructMemberList other) : base(other) { }
+
         public StructMemberList(IStructMember member) : this(new IStructMember[1] { member }) { }
 
         public StructMemberList(IStructMember[] members) : base(members) { }
@@ -156,6 +158,12 @@
         public static implicit operator StructMemberList(StructSection[] members)
         {
             return new(members);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new StructMemberList(this);
         }
     }
 }

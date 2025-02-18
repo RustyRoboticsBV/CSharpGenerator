@@ -13,6 +13,11 @@
 
         /* Public methods. */
         /// <summary>
+        /// Make a deep copy of this generator.
+        /// </summary>
+        public abstract Generator Copy();
+
+        /// <summary>
         /// Generate C# code.
         /// </summary>
         public abstract string Generate();

@@ -13,12 +13,33 @@
         public string Name { get; set; } = "Name";
         public GenericParameterList GenericParameters { get; set; } = new();
         public ParameterList Parameters { get; set; } = new();
+        public GenericConstraintList GenericConstraints { get; set; } = new();
+
+        /* Constructors. */
+        public Delegate() { }
+
+        public Delegate(Delegate other)
+        {
+            Summary = new(other.Summary);
+            Attributes = new(other.Attributes);
+            Access = new(other.Access);
+            ReturnType = other.ReturnType;
+            Name = other.Name;
+            GenericParameters = new(other.GenericParameters);
+            Parameters = new(other.Parameters);
+            GenericConstraints = new(other.GenericConstraints);
+        }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Delegate(this);
+        }
+
         public override string Generate()
         {
             return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}delegate {ReturnType} {Name}"
-                + $"{GenericParameters.Generate()}({Parameters.Generate()});";
+                + $"{GenericParameters.Generate()}({Parameters.Generate()}){GenericConstraints.Generate()};";
         }
     }
 }

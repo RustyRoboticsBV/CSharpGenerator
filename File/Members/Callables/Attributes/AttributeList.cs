@@ -8,6 +8,8 @@
         /* Constructors. */
         public AttributeList() : base() { }
 
+        public AttributeList(AttributeList other) : base(other) { }
+
         public AttributeList(Attribute attribute) : base(attribute) { }
 
         public AttributeList(Attribute[] attributes) : base(attributes) { }
@@ -39,6 +41,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new AttributeList(this);
+        }
+
         public override string Generate()
         {
             if (Length == 0)

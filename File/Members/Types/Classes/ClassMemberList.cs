@@ -6,7 +6,9 @@
     public class ClassMemberList : MemberList<Generator, IClassMember>
     {
         /* Constructors. */
-        public ClassMemberList() : base() {}
+        public ClassMemberList() : base() { }
+
+        public ClassMemberList(ClassMemberList other) : base(other) { }
 
         public ClassMemberList(IClassMember member) : this(new IClassMember[1] { member }) { }
 
@@ -156,6 +158,12 @@
         public static implicit operator ClassMemberList(ClassSection[] members)
         {
             return new(members);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new ClassMemberList(this);
         }
     }
 }

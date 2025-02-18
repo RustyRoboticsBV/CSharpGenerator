@@ -8,13 +8,25 @@ namespace CSharpGenerator
     public class UnaryMathOperator : Operator
     {
         /* Public properties. */
-        public Summary Summary { get; set; } = "";
         public string ReturnType { get; set; } = "int";
         public UnaryMathOperatorID Operator { get; set; } = UnaryMathOperatorID.Negative;
         public Parameter Operand { get; set; } = new();
-        public MethodImplementation Implementation { get; set; } = "";
+
+        /* Constructors. */
+        public UnaryMathOperator() { }
+
+        public UnaryMathOperator(UnaryMathOperator other) : base(other)
+        {
+            Operator = other.Operator;
+            Operand = new(other.Operand);
+        }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new UnaryMathOperator(this);
+        }
+
         public override string Generate()
         {
             return $"{Summary.Generate("\n")}public static {ReturnType} operator {GetName(Operator)}({Operand.Generate()})"

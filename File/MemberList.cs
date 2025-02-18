@@ -13,6 +13,8 @@
         /* Constructors. */
         public MemberList() : base() { }
 
+        public MemberList(MemberList<T, InterfaceT> other) : base(other) { }
+
         public MemberList(T member) : base(member) { }
 
         public MemberList(T[] members) : base(members) { }

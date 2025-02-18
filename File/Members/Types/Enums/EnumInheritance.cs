@@ -5,6 +5,14 @@
         /* Public properties. */
         public string ParentType { get; set; } = "";
 
+        /* Constructors. */
+        public EnumInheritance() { }
+
+        public EnumInheritance(EnumInheritance other)
+        {
+            ParentType = other.ParentType;
+        }
+
         /* Casting operators. */
         public static implicit operator EnumInheritance(string parentType)
         {
@@ -12,6 +20,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new EnumInheritance(this);
+        }
+
         public override string Generate()
         {
             if (ParentType != "")

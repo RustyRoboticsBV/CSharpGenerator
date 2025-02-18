@@ -12,6 +12,11 @@
         /* Constructors. */
         public Block() { }
 
+        public Block(Block other)
+        {
+            Contents = other.Contents.Copy();
+        }
+
         public Block(string code)
         {
             Contents = (Code)code;
@@ -34,6 +39,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Block(this);
+        }
+
         public override string Generate()
         {
             if (Contents == null)

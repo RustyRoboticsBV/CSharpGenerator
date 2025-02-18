@@ -11,6 +11,8 @@
         /* Constructors. */
         public EnumMemberList() : base() { }
 
+        public EnumMemberList(EnumMemberList other) : base(other) { }
+
         public EnumMemberList(EnumMember member) : this(new EnumMember[1] { member }) { }
 
         public EnumMemberList(EnumMember[] members) : base()
@@ -41,6 +43,12 @@
         public static implicit operator EnumMemberList(string[] members)
         {
             return new(members);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new EnumMemberList(this);
         }
     }
 }

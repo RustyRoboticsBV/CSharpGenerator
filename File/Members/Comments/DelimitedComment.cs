@@ -5,6 +5,13 @@
     /// </summary>
     public class DelimitedComment : Comment
     {
+        /* Constructors. */
+        public DelimitedComment() : base() { }
+
+        public DelimitedComment(DelimitedComment other) : base(other) { }
+
+        public DelimitedComment(string text) : base(text) { }
+
         /* Casting operators. */
         public static implicit operator DelimitedComment(string text)
         {
@@ -12,6 +19,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new DelimitedComment(this);
+        }
+
         public override string Generate()
         {
             if (Text == "")

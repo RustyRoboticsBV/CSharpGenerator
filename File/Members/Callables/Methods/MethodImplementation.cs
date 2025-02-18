@@ -11,6 +11,8 @@
         /* Constructors. */
         public MethodImplementation() : base() { }
 
+        public MethodImplementation(MethodImplementation other) : base(other) { }
+
         public MethodImplementation(Code code) : base(code) { }
 
         public MethodImplementation(Code[] code) : base(code) { }
@@ -47,6 +49,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new MethodImplementation(this);
+        }
+
         public override string Generate()
         {
             string code = base.Generate().Trim();

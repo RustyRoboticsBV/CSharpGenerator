@@ -8,6 +8,8 @@
         /* Constructors. */
         public GenericParameterList() : base() { }
 
+        public GenericParameterList(GenericParameterList other) : base(other) { }
+
         public GenericParameterList(Argument argumet) : base(argumet) { }
 
         public GenericParameterList(Argument[] argument) : base(argument) { }
@@ -39,6 +41,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new GenericParameterList(this);
+        }
+
         public override string Generate()
         {
             string code = base.Generate();

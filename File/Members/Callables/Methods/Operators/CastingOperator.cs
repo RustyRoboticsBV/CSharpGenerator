@@ -6,13 +6,26 @@
     public class CastingOperator : Operator
     {
         /* Public properties. */
-        public Summary Summary { get; set; } = "";
         public CastingModifier Modifier { get; set; } = CastingModifierID.Implicit;
         public string ReturnType { get; set; } = "int";
         public Parameter Operand { get; set; } = new();
-        public MethodImplementation Implementation { get; set; } = "";
+
+        /* Constructors. */
+        public CastingOperator() : base() { }
+
+        public CastingOperator(CastingOperator other) : base(other)
+        {
+            Modifier = new(other.Modifier);
+            ReturnType = other.ReturnType;
+            Operand = new(other.Operand);
+        }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new CastingOperator(this);
+        }
+
         public override string Generate()
         {
             return $"{Summary.Generate("\n")}public static {Modifier.Generate(" ")}operator {ReturnType}({Operand.Generate()})"

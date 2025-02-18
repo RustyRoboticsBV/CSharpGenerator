@@ -5,19 +5,36 @@
     /// </summary>
     public class AccessModifier : GeneratorChoice<AccessID>
     {
+        /* Constructors. */
+        public AccessModifier() : base() { }
+
+        public AccessModifier(AccessModifier other) : base(other) { }
+
+        public AccessModifier(AccessID id) : base(id) { }
+
+        public AccessModifier(string id) : base(id) { }
+
         /* Casting operators. */
-        public static implicit operator AccessModifier(AccessID ID)
+        public static implicit operator AccessModifier(string id)
         {
-            return new()
-            {
-                ID = ID
-            };
+            return new(id);
+        }
+
+        public static implicit operator AccessModifier(AccessID id)
+        {
+            return new(id);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new AccessModifier(this);
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(AccessID ID)
+        protected override Keyword GetKeyword(AccessID id)
         {
-            switch (ID)
+            switch (id)
             {
                 case AccessID.Public:
                     return "public";

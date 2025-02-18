@@ -13,7 +13,25 @@
         public EnumInheritance Inheritance { get; set; } = new();
         public EnumMemberList Members { get; set; } = new();
 
+        /* Constructors. */
+        public Enum() { }
+
+        public Enum(Enum other)
+        {
+            Summary = new(other.Summary);
+            Attributes = new(other.Attributes);
+            Access = new(other.Access);
+            Name = other.Name;
+            Inheritance = new(other.Inheritance);
+            Members = new(other.Members);
+        }
+
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Enum(this);
+        }
+
         public override string Generate()
         {
             Block contents = new Block()

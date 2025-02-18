@@ -16,6 +16,16 @@
         /* Constructors. */
         public Field() { }
 
+        public Field(Field field)
+        {
+            Summary = new(field.Summary);
+            Attributes = new(field.Attributes);
+            Access = field.Access.ID;
+            Type = field.Type;
+            Name = field.Name;
+            Value = field.Value;
+        }
+
         public Field(Summary summary, AttributeList attributes, AccessID access, string type, string name, string value = "")
         {
             Summary = summary;
@@ -85,6 +95,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Field(this);
+        }
+
         public override string Generate()
         {
             if (Value == "")

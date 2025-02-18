@@ -11,6 +11,8 @@
         /* Constructors. */
         public UsingList() : base() { }
 
+        public UsingList(UsingList other) : base(other) { }
+
         public UsingList(Using member) : base(member) { }
 
         public UsingList(Using[] members) : base(members) { }
@@ -44,6 +46,12 @@
         public static implicit operator UsingList(string[] members)
         {
             return new(members);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new UsingList(this);
         }
     }
 }

@@ -13,7 +13,25 @@
         public ParameterList Parameters { get; set; } = new();
         public MethodImplementation Implementation { get; set; } = "";
 
+        /* Constructors. */
+        public Constructor() { }
+
+        public Constructor(Constructor other)
+        {
+            Summary = new(other.Summary);
+            Access = new(other.Access);
+            IsStatic = other.IsStatic;
+            TypeName = other.TypeName;
+            Parameters = new(other.Parameters);
+            Implementation = new(other.Implementation);
+        }
+
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Constructor(this);
+        }
+
         public override string Generate()
         {
             if (IsStatic)

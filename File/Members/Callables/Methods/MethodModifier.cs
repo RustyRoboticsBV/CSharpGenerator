@@ -5,6 +5,13 @@
     /// </summary>
     public class MethodModifier : GeneratorChoice<MethodModifierID>
     {
+        /* Constructors. */
+        public MethodModifier() : base() { }
+
+        public MethodModifier(MethodModifier other) : base(other) { }
+
+        public MethodModifier(MethodModifierID id) : base(id) { }
+
         /* Casting operators. */
         public static implicit operator MethodModifier(MethodModifierID ID)
         {
@@ -12,6 +19,12 @@
             {
                 ID = ID
             };
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new MethodModifier(this);
         }
 
         /* Protected methods. */

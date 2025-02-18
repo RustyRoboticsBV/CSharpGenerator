@@ -11,6 +11,24 @@
         /// </summary>
         public T ID { get; set; } = default;
 
+        /* Constructors. */
+        public GeneratorChoice() { }
+
+        public GeneratorChoice(GeneratorChoice<T> other)
+        {
+            ID = other.ID;
+        }
+
+        public GeneratorChoice(T id) 
+        {
+            ID = id;
+        }
+
+        public GeneratorChoice(string id)
+        {
+            ID = (T)System.Enum.Parse(typeof(T), id);
+        }
+
         /* Public methods. */
         public override string Generate()
         {

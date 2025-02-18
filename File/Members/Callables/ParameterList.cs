@@ -11,6 +11,8 @@
         /* Constructors. */
         public ParameterList() : base() { }
 
+        public ParameterList(ParameterList other) : base(other) { }
+
         public ParameterList(Parameter parameter) : base(parameter) { }
 
         public ParameterList(Parameter[] parameters) : base(parameters) { }
@@ -24,6 +26,12 @@
         public static implicit operator ParameterList(Parameter[] parameters)
         {
             return new(parameters);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new ParameterList(this);
         }
     }
 }

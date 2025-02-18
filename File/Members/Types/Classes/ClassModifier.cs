@@ -5,19 +5,29 @@
     /// </summary>
     public class ClassModifier : GeneratorChoice<ClassModifierID>
     {
+        /* Constructors. */
+        public ClassModifier() : base() { }
+
+        public ClassModifier(ClassModifier other) : base(other) { }
+
+        public ClassModifier(ClassModifierID id) : base(id) { }
+
         /* Casting operators. */
-        public static implicit operator ClassModifier(ClassModifierID ID)
+        public static implicit operator ClassModifier(ClassModifierID id)
         {
-            return new()
-            {
-                ID = ID
-            };
+            return new(id);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new ClassModifier(this);
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(ClassModifierID ID)
+        protected override Keyword GetKeyword(ClassModifierID id)
         {
-            switch (ID)
+            switch (id)
             {
                 case ClassModifierID.Static:
                     return "static";

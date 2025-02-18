@@ -11,6 +11,11 @@
         /* Constructors. */
         public Using() { }
 
+        public Using(Using other)
+        {
+            Namespace = other.Namespace;
+        }
+
         public Using(string @namespace) : this()
         {
             Namespace = @namespace;
@@ -23,6 +28,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new Using(this);
+        }
+
         public override string Generate()
         {
             return $"using {Namespace};";

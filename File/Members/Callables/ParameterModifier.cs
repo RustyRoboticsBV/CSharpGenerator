@@ -5,19 +5,29 @@
     /// </summary>
     public class ParameterModifier : GeneratorChoice<ParameterModifierID>
     {
+        /* Constructors. */
+        public ParameterModifier() { }
+
+        public ParameterModifier(ParameterModifier other) : base(other) { }
+
+        public ParameterModifier(ParameterModifierID id) : base(id) { }
+
         /* Casting operators. */
-        public static implicit operator ParameterModifier(ParameterModifierID ID)
+        public static implicit operator ParameterModifier(ParameterModifierID id)
         {
-            return new()
-            {
-                ID = ID
-            };
+            return new(id);
+        }
+
+        /* Public methods. */
+        public override Generator Copy()
+        {
+            return new ParameterModifier(this);
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(ParameterModifierID ID)
+        protected override Keyword GetKeyword(ParameterModifierID id)
         {
-            switch (ID)
+            switch (id)
             {
                 case ParameterModifierID.In:
                     return "in";

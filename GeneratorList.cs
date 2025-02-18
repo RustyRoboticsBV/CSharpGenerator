@@ -17,6 +17,12 @@ namespace CSharpGenerator
         /// </summary>
         public int Length => Elements.Count;
 
+        /* Protected properties. */
+        /// <summary>
+        /// The separator string that gets inserted between elements.
+        /// </summary>
+        protected virtual string Separator => ", ";
+
         /* Indexers. */
         public T this[int index]
         {
@@ -24,14 +30,16 @@ namespace CSharpGenerator
             set => Elements[index] = value;
         }
 
-        /* Protected properties. */
-        /// <summary>
-        /// The separator string that gets inserted between elements.
-        /// </summary>
-        protected virtual string Separator => ", ";
-
         /* Constructors. */
         public GeneratorList() : this(new T[0]) { }
+
+        public GeneratorList(GeneratorList<T> other) : this()
+        {
+            for (int i = 0; i < other.Elements.Count; i++)
+            {
+                Elements.Add(other.Elements[i].Copy() as T);
+            }
+        }
 
         public GeneratorList(T element) : this(new T[1] { element }) { }
 
