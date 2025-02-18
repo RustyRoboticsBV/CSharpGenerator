@@ -13,7 +13,7 @@
 
         public GenericConstraintList(GenericConstraintList other) : base(other) { }
 
-        public GenericConstraintList(GenericConstraint argumet) : base(argumet) { }
+        public GenericConstraintList(GenericConstraint argument) : base(argument) { }
 
         public GenericConstraintList(GenericConstraint[] argument) : base(argument) { }
 

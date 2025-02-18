@@ -60,10 +60,10 @@ namespace CSharpGenerator
                 return "";
             else
             {
-                string code = Elements[0].Generate();
+                string code = Elements[0]?.Generate();
                 for (int i = 1; i < Length; i++)
                 {
-                    code += $"{Separator}{Elements[i].Generate()}";
+                    code += $"{Separator}{Elements[i]?.Generate()}";
                 }
                 return code;
             }

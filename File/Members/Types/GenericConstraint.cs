@@ -8,6 +8,8 @@
         /* Constructors. */
         public GenericConstraint() : base() { }
 
+        public GenericConstraint(GenericConstraint other) : base(other) { }
+
         public GenericConstraint(string name, string baseClass) : base(baseClass)
         {
             Name = name;
@@ -24,6 +26,11 @@
         }
 
         /* Public methods. */
+        public override Generator Copy()
+        {
+            return new GenericConstraint(this);
+        }
+
         public override string Generate()
         {
             string code = base.Generate();

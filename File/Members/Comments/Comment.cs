@@ -3,7 +3,8 @@
     /// <summary>
     /// A base class for comment generators.
     /// </summary>
-    public abstract class Comment : Generator
+    public abstract class Comment : Generator,
+        IFileMember, INamespaceMember, IClassMember, IStructMember, IInterfaceMember, IEnumMember
     {
         /* Public properties. */
         public string Text { get; set; } = "";

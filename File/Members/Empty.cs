@@ -3,7 +3,7 @@
     /// <summary>
     /// A generator that generates nothing.
     /// </summary>
-    public class Empty : Generator, IClassMember, IStructMember, IEnumMember, INamespaceMember
+    public class Empty : Generator, IFileMember, INamespaceMember, IClassMember, IStructMember, IInterfaceMember, IEnumMember
     {
         /* Public methods. */
         public override Generator Copy()
