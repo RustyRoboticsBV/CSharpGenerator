@@ -11,18 +11,16 @@
         public AccessModifier Access { get; set; } = AccessID.Public;
         public StructModifier Modifier { get; set; } = StructModifierID.None;
         public string Name { get; set; } = "";
+        public GenericParameterList GenericParameters { get; set; } = new();
         public StructInheritance Inheritance { get; set; } = new();
         public StructMemberList Members { get; set; } = new();
 
         /* Public methods. */
         public override string Generate()
         {
-            Block contents = new Block()
-            {
-                Contents = Members
-            };
+            Block contents = new Block(Members);
             return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}{Modifier.Generate(" ")}"
-                + $"struct {Name}{Inheritance.Generate()}\n{contents.Generate()}";
+                + $"struct {Name}{GenericParameters.Generate()}{Inheritance.Generate()}\n{contents.Generate()}";
         }
     }
 }

@@ -41,7 +41,11 @@
         /* Public methods. */
         public override string Generate()
         {
-            return $"<{base.Generate()}>";
+            string code = base.Generate();
+            if (code == "")
+                return code;
+            else
+                return $"<{code}>";
         }
     }
 }
