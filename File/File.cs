@@ -20,7 +20,7 @@
         /// <summary>
         /// Generate & save this file.
         /// </summary>
-        public void SaveToFile()
+        public void WriteToDisk()
         {
             // Build filepath.
             string filePath = Name;

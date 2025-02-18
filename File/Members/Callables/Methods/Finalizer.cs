@@ -3,7 +3,7 @@
     /// <summary>
     /// A destructor generator.
     /// </summary>
-    public class Destructor : Generator, IClassMember, IStructMember
+    public class Finalizer : Generator, IClassMember, IStructMember
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";

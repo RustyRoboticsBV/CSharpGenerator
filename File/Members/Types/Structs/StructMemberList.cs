@@ -108,12 +108,12 @@
             return new(members);
         }
 
-        public static implicit operator StructMemberList(Destructor member)
+        public static implicit operator StructMemberList(Finalizer member)
         {
             return new IStructMember[1] { member };
         }
 
-        public static implicit operator StructMemberList(Destructor[] members)
+        public static implicit operator StructMemberList(Finalizer[] members)
         {
             return new(members);
         }
