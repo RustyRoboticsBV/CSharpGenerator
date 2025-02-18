@@ -3,7 +3,7 @@
     /// <summary>
     /// An event generator.
     /// </summary>
-    public class Event : Generator, IClassMember, IStructMember, INamespaceMember, IFileMember
+    public class Event : Generator, IClassMember, IStructMember
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";

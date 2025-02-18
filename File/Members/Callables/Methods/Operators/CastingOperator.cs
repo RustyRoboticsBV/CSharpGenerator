@@ -3,7 +3,7 @@
     /// <summary>
     /// A casting operator generator.
     /// </summary>
-    public class CastingOperator : Generator, IClassMember, IStructMember
+    public class CastingOperator : Operator
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";

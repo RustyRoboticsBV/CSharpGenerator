@@ -8,33 +8,42 @@
         /* Protected properties. */
         protected override string Separator => "\n";
 
+        /* Constructors. */
+        public MethodImplementation() : base() { }
+
+        public MethodImplementation(Code code) : base(code) { }
+
+        public MethodImplementation(Code[] code) : base(code) { }
+
+        public MethodImplementation(string code) : base((Code)code) { }
+
+        public MethodImplementation(string[] code) : base()
+        {
+            for (int i = 0; i < code.Length; i++)
+            {
+                Elements.Add((Code)code[i]);
+            }
+        }
+
         /* Casting operators. */
         public static implicit operator MethodImplementation(string code)
         {
-            return (Code)code;
+            return new(code);
         }
 
         public static implicit operator MethodImplementation(string[] code)
         {
-            Code[] result = new Code[code.Length];
-            for (int i = 0; i < code.Length; i++)
-            {
-                result[i] = code[i];
-            }
-            return result;
+            return new(code);
         }
 
         public static implicit operator MethodImplementation(Code code)
         {
-            return new Code[] { code };
+            return new(code);
         }
 
         public static implicit operator MethodImplementation(Code[] code)
         {
-            return new()
-            {
-                Elements = code
-            };
+            return new(code);
         }
 
         /* Public methods. */

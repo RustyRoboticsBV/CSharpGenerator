@@ -1,7 +1,9 @@
-﻿namespace CSharpGenerator
+﻿using System.Collections.Generic;
+
+namespace CSharpGenerator
 {
     /// <summary>
-    /// A generator list generator.
+    /// A generator list.
     /// </summary>
     public abstract class GeneratorList<T> : Generator where T : Generator
     {
@@ -9,11 +11,11 @@
         /// <summary>
         /// The element generators.
         /// </summary>
-        public T[] Elements { get; set; }
+        public List<T> Elements { get; set; } = new();
         /// <summary>
         /// The number of elements.
         /// </summary>
-        public int Length => Elements.Length;
+        public int Length => Elements.Count;
 
         /* Indexers. */
         public T this[int index]
@@ -26,26 +28,27 @@
         /// <summary>
         /// The separator string that gets inserted between elements.
         /// </summary>
-        protected abstract string Separator { get; }
+        protected virtual string Separator => ", ";
 
         /* Constructors. */
         public GeneratorList() : this(new T[0]) { }
 
+        public GeneratorList(T element) : this(new T[1] { element }) { }
+
         public GeneratorList(T[] elements)
         {
-            Elements = elements ?? new T[0];
+            Elements = new(elements);
         }
 
-        /* Casting operators. */
-        public static implicit operator T[](GeneratorList<T> list)
+        public GeneratorList(List<T> elements)
         {
-            return list.Elements;
+            Elements = elements;
         }
 
         /* Public methods. */
         public override string Generate()
         {
-            if (Elements.Length == 0)
+            if (Length == 0)
                 return "";
             else
             {

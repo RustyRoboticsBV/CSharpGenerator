@@ -5,7 +5,7 @@ namespace CSharpGenerator
     /// <summary>
     /// A unary math operator generator.
     /// </summary>
-    public class UnaryMathOperator : Generator, IClassMember, IStructMember
+    public class UnaryMathOperator : Operator
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";

@@ -1,19 +1,18 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// A property generator.
+    /// An indexer generator.
     /// </summary>
-    public class Property : Generator, IClassMember, IStructMember, IInterfaceMember
+    public class Indexer : Generator, IClassMember, IStructMember, IInterfaceMember 
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";
         public AttributeList Attributes { get; set; } = new();
         public AccessModifier Access { get; set; } = AccessID.Public;
-        public string Type { get; set; } = "int";
-        public string Name { get; set; } = "";
+        public string ReturnType { get; set; } = "int";
+        public ParameterList Parameters { get; set; } = new();
         public Getter Getter { get; set; } = new();
         public Setter Setter { get; set; } = new();
-        public string Default { get; set; } = "";
 
         /* Public methods. */
         public override string Generate()
@@ -44,14 +43,10 @@
                 implementation = setter.Substring(4);
 
             // Generate code.
-            string code = $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{Type} {Name} "
-                + $"{implementation}";
+            string code = $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{ReturnType} this"
+                + $"[{Parameters.Generate()}] {implementation}";
 
-            // Add default value.
-            if (Default != "")
-                return code + $" = {Default}";
-            else
-                return code;
+            return code;
         }
     }
 }

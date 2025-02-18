@@ -11,18 +11,16 @@
         public AccessModifier Access { get; set; } = AccessID.Public;
         public ClassModifier Modifier { get; set; } = ClassModifierID.None;
         public string Name { get; set; } = "";
+        public GenericParameterList GenericParameters { get; set; } = new();
         public ClassInheritance Inheritance { get; set; } = new();
         public ClassMemberList Members { get; set; } = new();
 
         /* Public methods. */
         public override string Generate()
         {
-            Block contents = new Block()
-            {
-                Contents = Members
-            };
+            Block contents = new Block(Members);
             return $"{Summary.Generate("\n")}{Attributes.Generate("\n")}{Access.Generate(" ")}{Modifier.Generate(" ")}"
-                + $"class {Name}{Inheritance.Generate()}\n{contents.Generate()}";
+                + $"class {Name}{GenericParameters.Generate()}{Inheritance.Generate()}\n{contents.Generate()}";
         }
     }
 }

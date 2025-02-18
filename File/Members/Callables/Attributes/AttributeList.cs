@@ -5,24 +5,22 @@
     /// </summary>
     public class AttributeList : GeneratorList<Attribute>
     {
-        /* Protected properties. */
-        protected override string Separator => ", ";
+        /* Constructors. */
+        public AttributeList() : base() { }
+
+        public AttributeList(Attribute attribute) : base(attribute) { }
+
+        public AttributeList(Attribute[] attributes) : base(attributes) { }
 
         /* Conversion operators. */
         public static implicit operator AttributeList(Attribute attribute)
         {
-            return new()
-            {
-                Elements = new Attribute[] { attribute }
-            };
+            return new(attribute);
         }
         
         public static implicit operator AttributeList(Attribute[] attributes)
         {
-            return new()
-            {
-                Elements = attributes
-            };
+            return new(attributes);
         }
 
         public static implicit operator AttributeList(string attribute)
@@ -43,7 +41,7 @@
         /* Public methods. */
         public override string Generate()
         {
-            if (Elements.Length == 0)
+            if (Length == 0)
                 return "";
             else
                 return $"[{base.Generate().Replace("[", "").Replace("]", "")}]";

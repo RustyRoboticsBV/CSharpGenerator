@@ -3,13 +3,13 @@
     /// <summary>
     /// An include statement generator.
     /// </summary>
-    public class Include : Generator
+    public class Using : Generator
     {
         /* Public properties. */
         public string Namespace { get; set; }
 
         /* Casting operators. */
-        public static implicit operator Include(string @namespace)
+        public static implicit operator Using(string @namespace)
         {
             return new()
             {

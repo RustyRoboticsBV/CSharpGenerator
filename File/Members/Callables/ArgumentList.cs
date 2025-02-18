@@ -5,18 +5,22 @@
     /// </summary>
     public class ArgumentList : GeneratorList<Argument>
     {
-        /* Protected methods. */
-        protected override string Separator => ", ";
+        /* Constructors. */
+        public ArgumentList() : base() { }
+
+        public ArgumentList(Argument argumet) : base(argumet) { }
+
+        public ArgumentList(Argument[] argument) : base(argument) { }
 
         /* Casting operators. */
-        public static implicit operator ArgumentList(Argument[] arguments)
-        {
-            return new ArgumentList() { Elements = arguments };
-        }
-
         public static implicit operator ArgumentList(Argument argument)
         {
-            return new Argument[1] { argument };
+            return new(argument);
+        }
+
+        public static implicit operator ArgumentList(Argument[] arguments)
+        {
+            return new(arguments);
         }
 
         public static implicit operator ArgumentList(string argument)

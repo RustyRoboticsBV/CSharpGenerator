@@ -8,15 +8,22 @@
         /* Protected methods. */
         protected override string Separator => ", ";
 
-        /* Casting operators. */
-        public static implicit operator ParameterList(Parameter[] parameters)
-        {
-            return new() { Elements = parameters };
-        }
+        /* Constructors. */
+        public ParameterList() : base() { }
 
+        public ParameterList(Parameter parameter) : base(parameter) { }
+
+        public ParameterList(Parameter[] parameters) : base(parameters) { }
+
+        /* Casting operators. */
         public static implicit operator ParameterList(Parameter parameter)
         {
-            return new Parameter[] { parameter };
+            return new(parameter);
+        }
+
+        public static implicit operator ParameterList(Parameter[] parameters)
+        {
+            return new(parameters);
         }
     }
 }

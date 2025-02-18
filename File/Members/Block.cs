@@ -8,19 +8,29 @@
         /* Public properties. */
         public Generator Contents { get; set; }
         public static int Indentation { get; set; } = 4;
-        
+
+        /* Constructors. */
+        public Block() { }
+
+        public Block(string code)
+        {
+            Contents = (Code)code;
+        }
+
+        public Block(Generator generator)
+        {
+            Contents = generator;
+        }
+
         /* Casting operators. */
         public static implicit operator Block(string contents)
         {
-            return (Code)contents;
+            return new(contents);
         }
 
         public static implicit operator Block(Code contents)
         {
-            return new()
-            {
-                Contents = contents
-            };
+            return new(contents);
         }
 
         /* Public methods. */

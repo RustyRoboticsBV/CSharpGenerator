@@ -5,7 +5,7 @@ namespace CSharpGenerator
     /// <summary>
     /// A binary math operator generator.
     /// </summary>
-    public class BinaryMathOperator : Generator, IClassMember, IStructMember
+    public class BinaryMathOperator : Operator
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";

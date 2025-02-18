@@ -28,5 +28,17 @@
             else
                 return "";
         }
+
+        /// <summary>
+        /// Generate C# code. If the generation did not return the empty string, attach the prefix and suffix.
+        /// </summary>
+        public string Generate(string prefix, string suffix)
+        {
+            string code = Generate(suffix);
+            if (code != "")
+                return prefix + code;
+            else
+                return "";
+        }
     }
 }

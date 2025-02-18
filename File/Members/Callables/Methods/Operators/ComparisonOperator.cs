@@ -5,7 +5,7 @@ namespace CSharpGenerator
     /// <summary>
     /// A comparison operator generator.
     /// </summary>
-    public class ComparisonOperator : Generator, IClassMember, IStructMember
+    public class ComparisonOperator : Operator
     {
         /* Public properties. */
         public Summary Summary { get; set; } = "";

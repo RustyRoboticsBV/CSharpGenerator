@@ -8,13 +8,13 @@
         /* Public properties. */
         public string Directory { get; set; } = "";
         public string Name { get; set; } = "";
-        public IncludeList Includes { get; set; } = new();
+        public UsingList Usings { get; set; } = new();
         public FileMemberList Members { get; set; } = new();
 
         /* Public methods. */
         public override string Generate()
         {
-            return $"{Includes.Generate("\n\n")}{Members.Generate()}";
+            return $"{Usings.Generate("\n\n")}{Members.Generate()}";
         }
 
         /// <summary>

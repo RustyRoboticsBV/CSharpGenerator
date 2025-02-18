@@ -1,60 +1,39 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// A generator list generator.
+    /// A member list generator.
     /// </summary>
-    public abstract class MemberList<T> : Generator where T : IMember
+    public abstract class MemberList<T, InterfaceT> : GeneratorList<T>
+        where T : Generator
+        where InterfaceT : IMember
     {
-        /* Public properties. */
-        /// <summary>
-        /// The element generators.
-        /// </summary>
-        public T[] Elements { get; set; }
-        /// <summary>
-        /// The number of elements.
-        /// </summary>
-        public int Length => Elements.Length;
-
-        /* Indexers. */
-        public T this[int index]
-        {
-            get => Elements[index];
-            set => Elements[index] = value;
-        }
-
-        /* Protected properties. */
-        /// <summary>
-        /// The separator string that gets inserted between elements.
-        /// </summary>
-        protected virtual string Separator => "\n";
+        /* Protected properties */
+        protected override string Separator => "\n";
 
         /* Constructors. */
-        public MemberList() : this(new T[0]) { }
+        public MemberList() : base() { }
 
-        public MemberList(T[] elements)
-        {
-            Elements = elements ?? new T[0];
-        }
+        public MemberList(T member) : base(member) { }
 
-        /* Casting operators. */
-        public static implicit operator T[](MemberList<T> list)
-        {
-            return list.Elements;
-        }
+        public MemberList(T[] members) : base(members) { }
 
-        /* Public methods. */
-        public override string Generate()
+        public MemberList(InterfaceT member) : this(new InterfaceT[1] { member }) { }
+
+        public MemberList(InterfaceT[] members)
         {
-            if (Elements.Length == 0)
-                return "";
-            else
+            for (int i = 0; i < members.Length; i++)
             {
-                string code = Elements[0].Generate();
-                for (int i = 1; i < Length; i++)
-                {
-                    code += $"{Separator}{Elements[i].Generate()}";
-                }
-                return code;
+                if (members[i] is T generator)
+                    Elements.Add(generator);
+            }
+        }
+
+        /* Protected methods. */
+        protected void Populate<U>(U[] members) where U : T
+        {
+            foreach (U member in members)
+            {
+                Elements.Add(member);
             }
         }
     }
