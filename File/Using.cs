@@ -8,13 +8,18 @@
         /* Public properties. */
         public string Namespace { get; set; }
 
+        /* Constructors. */
+        public Using() { }
+
+        public Using(string @namespace) : this()
+        {
+            Namespace = @namespace;
+        }
+
         /* Casting operators. */
         public static implicit operator Using(string @namespace)
         {
-            return new()
-            {
-                Namespace = @namespace
-            };
+            return new(@namespace);
         }
 
         /* Public methods. */

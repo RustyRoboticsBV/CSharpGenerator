@@ -15,7 +15,7 @@
 
         public UsingList(Using[] members) : base(members) { }
 
-        public UsingList(string member) : base(member) { }
+        public UsingList(string member) : base((Using)member) { }
 
         public UsingList(string[] members) : base()
         {

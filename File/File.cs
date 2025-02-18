@@ -28,7 +28,7 @@
                 filePath = $"{Directory}/{Name}";
 
             // Save to file.
-            System.IO.File.WriteAllText(filePath, Members.Generate());
+            System.IO.File.WriteAllText(filePath, Generate());
         }
     }
 }
