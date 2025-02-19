@@ -1,9 +1,9 @@
 ﻿namespace CSharpGenerator
 {
     /// <summary>
-    /// A method override modifier keyword id.
+    /// A property override modifier keyword id.
     /// </summary>
-    public enum MethodModifierID
+    public enum PropertyModifierID
     {
         None,
         Static,
@@ -14,7 +14,6 @@
         OverrideSealed,
         New,
         NewVirtual,
-        Readonly,
-        OverrideReadonly
+        Readonly
     }
 }

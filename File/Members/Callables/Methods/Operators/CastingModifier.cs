@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CSharpGenerator
+﻿namespace CSharpGenerator
 {
     /// <summary>
     /// A casting operator modifier generator.
@@ -36,7 +34,7 @@ namespace CSharpGenerator
                 case CastingModifierID.Implicit:
                     return "implicit";
                 default:
-                    throw new ArgumentException();
+                    return "";
             }
         }
     }

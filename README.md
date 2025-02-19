@@ -22,7 +22,7 @@ The following C# language features can be generated:
   - Indexers
 - Properties
 - Fields
-- "Sections", which are defined as a grouping of type members, with a delimited comment at the top.
+- "Sections", which are defined as a delimited comment, followed by a list of type members.
 
 All types and members can be annotated with attributes and a summary. Inheritance, as well as generic, static and abstract types & methods are supported.
 
@@ -32,6 +32,7 @@ The generator does NOT support method implementation generation - these must be 
 - Constructor calling from other constructors
 - Preprocessor directives
 - Records
+- Ref structs
 
 ### Usage
 Below is an example of how to generate a simple class.

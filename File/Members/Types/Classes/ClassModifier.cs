@@ -12,6 +12,8 @@
 
         public ClassModifier(ClassModifierID id) : base(id) { }
 
+        public ClassModifier(string id) : base(id) { }
+
         /* Casting operators. */
         public static implicit operator ClassModifier(ClassModifierID id)
         {

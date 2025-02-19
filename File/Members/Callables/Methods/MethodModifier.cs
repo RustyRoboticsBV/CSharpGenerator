@@ -12,13 +12,12 @@
 
         public MethodModifier(MethodModifierID id) : base(id) { }
 
+        public MethodModifier(string id) : base(id) { }
+
         /* Casting operators. */
-        public static implicit operator MethodModifier(MethodModifierID ID)
+        public static implicit operator MethodModifier(MethodModifierID id)
         {
-            return new()
-            {
-                ID = ID
-            };
+            return new(id);
         }
 
         /* Public methods. */
@@ -28,9 +27,9 @@
         }
 
         /* Protected methods. */
-        protected override Keyword GetKeyword(MethodModifierID ID)
+        protected override Keyword GetKeyword(MethodModifierID id)
         {
-            switch (ID)
+            switch (id)
             {
                 case MethodModifierID.Static:
                     return "static";
@@ -50,6 +49,8 @@
                     return "new virtual";
                 case MethodModifierID.Readonly:
                     return "readonly";
+                case MethodModifierID.OverrideReadonly:
+                    return "override readonly";
                 default:
                     return "";
             }

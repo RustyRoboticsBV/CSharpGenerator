@@ -9,6 +9,7 @@
         public Summary Summary { get; set; } = "";
         public AttributeList Attributes { get; set; } = new();
         public AccessModifier Access { get; set; } = AccessID.Public;
+        public PropertyModifier Modifier { get; set; } = PropertyModifierID.None;
         public string Type { get; set; } = "int";
         public string Name { get; set; } = "";
         public Getter Getter { get; set; } = new();
@@ -23,6 +24,7 @@
             Summary = new(other.Summary);
             Attributes = new(other.Attributes);
             Access = new(other.Access);
+            Modifier = new(other.Modifier);
             Type = other.Type;
             Name = other.Name;
             Getter = new(other.Getter);
@@ -64,8 +66,8 @@
                 implementation = setter.Substring(4);
 
             // Generate code.
-            string code = $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{Type} {Name} "
-                + $"{implementation}";
+            string code = $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{Modifier.Generate(" ")}" +
+                $"{Type} {Name} {implementation}";
 
             // Add default value.
             if (Default != "")

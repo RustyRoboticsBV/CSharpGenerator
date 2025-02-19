@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CSharpGenerator
+﻿namespace CSharpGenerator
 {
     /// <summary>
     /// A binary math operator generator.
@@ -9,7 +7,7 @@ namespace CSharpGenerator
     {
         /* Public properties. */
         public string ReturnType { get; set; } = "int";
-        public BinaryMathOperatorID Operator { get; set; } = BinaryMathOperatorID.Add;
+        public BinaryMathOperatorSymbol Operator { get; set; } = BinaryMathOperatorID.Add;
         public Parameter Operand1 { get; set; } = new();
         public Parameter Operand2 { get; set; } = new();
 
@@ -19,7 +17,7 @@ namespace CSharpGenerator
         public BinaryMathOperator(BinaryMathOperator other) : base()
         {
             ReturnType = other.ReturnType;
-            Operator = other.Operator;
+            Operator = new(other.Operator);
             Operand1 = new(other.Operand1);
             Operand2 = new(other.Operand2);
         }
@@ -33,28 +31,8 @@ namespace CSharpGenerator
         public override string Generate()
         {
             ParameterList parameters = new Parameter[] { Operand1, Operand2 };
-            return $"{Summary.Generate("\n")}public static {ReturnType} operator {GetName(Operator)}({parameters.Generate()})"
+            return $"{Summary.Generate("\n")}public static {ReturnType} operator {Operator.Generate()}({parameters.Generate()})"
                 + $"\n{Implementation.Generate()}";
-        }
-
-        /* Private methods. */
-        private static string GetName(BinaryMathOperatorID id)
-        {
-            switch (id)
-            {
-                case BinaryMathOperatorID.Add:
-                    return "+";
-                case BinaryMathOperatorID.Subtract:
-                    return "-";
-                case BinaryMathOperatorID.Multiply:
-                    return "*";
-                case BinaryMathOperatorID.Divide:
-                    return "/";
-                case BinaryMathOperatorID.Modulo:
-                    return "%";
-                default:
-                    throw new ArgumentException(id.ToString());
-            }
         }
     }
 }

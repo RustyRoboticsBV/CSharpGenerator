@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CSharpGenerator
+﻿namespace CSharpGenerator
 {
     /// <summary>
     /// A unary math operator generator.
@@ -9,7 +7,7 @@ namespace CSharpGenerator
     {
         /* Public properties. */
         public string ReturnType { get; set; } = "int";
-        public UnaryMathOperatorID Operator { get; set; } = UnaryMathOperatorID.Negative;
+        public UnaryMathOperatorSymbol Operator { get; set; } = UnaryMathOperatorID.Negative;
         public Parameter Operand { get; set; } = new();
 
         /* Constructors. */
@@ -17,7 +15,8 @@ namespace CSharpGenerator
 
         public UnaryMathOperator(UnaryMathOperator other) : base(other)
         {
-            Operator = other.Operator;
+            ReturnType = other.ReturnType;
+            Operator = new(other.Operator);
             Operand = new(other.Operand);
         }
 
@@ -29,24 +28,8 @@ namespace CSharpGenerator
 
         public override string Generate()
         {
-            return $"{Summary.Generate("\n")}public static {ReturnType} operator {GetName(Operator)}({Operand.Generate()})"
+            return $"{Summary.Generate("\n")}public static {ReturnType} operator {Operator.Generate()}({Operand.Generate()})"
                 + $"\n{Implementation.Generate()}";
-        }
-
-        /* Private methods. */
-        private static string GetName(UnaryMathOperatorID id)
-        {
-            switch (id)
-            {
-                case UnaryMathOperatorID.Negative:
-                    return "-";
-                case UnaryMathOperatorID.Increment:
-                    return "++";
-                case UnaryMathOperatorID.Decrement:
-                    return "--";
-                default:
-                    throw new ArgumentException(id.ToString());
-            }
         }
     }
 }
