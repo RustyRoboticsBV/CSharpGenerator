@@ -7,7 +7,7 @@
     {
         /* Public properties. */
         public ParameterModifier Modifier { get; set; } = ParameterModifierID.None;
-        public string Type { get; set; } = "void";
+        public string Type { get; set; } = "int";
         public string Name { get; set; } = "";
         public Argument Default { get; set; } = new();
 
@@ -20,6 +20,21 @@
             Type = other.Type;
             Name = other.Name;
             Default = new(other.Default);
+        }
+
+        public Parameter(ParameterModifier modifier, string type, string name, string @default = "")
+        {
+            Modifier = modifier;
+            Type = type;
+            Name = name;
+            Default = @default;
+        }
+
+        public Parameter(string type, string name, string @default = "")
+        {
+            Type = type;
+            Name = name;
+            Default = @default;
         }
 
         /* Public methods. */

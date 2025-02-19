@@ -9,6 +9,7 @@
         public Summary Summary { get; set; } = "";
         public AttributeList Attributes { get; set; } = new();
         public AccessModifier Access { get; set; } = AccessID.Private;
+        public bool Readonly { get; set; }
         public string Type { get; set; } = "int";
         public string Name { get; set; } = "";
         public string Value { get; set; } = "";
@@ -102,10 +103,11 @@
 
         public override string Generate()
         {
+            string @readonly = Readonly ? "readonly " : "";
             if (Value == "")
-                return $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{Type} {Name};";
+                return $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{@readonly}{Type} {Name};";
             else
-                return $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{Type} {Name} = {Value};";
+                return $"{Summary.Generate("\n")}{Attributes.Generate(" ")}{Access.Generate(" ")}{@readonly}{Type} {Name} = {Value};";
         }
     }
 }
