@@ -1,4 +1,4 @@
-﻿namespace CSharpGenerator
+﻿namespace Rusty.CSharpGenerator
 {
     /// <summary>
     /// A constructor modifier keyword id.

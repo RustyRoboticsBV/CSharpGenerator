@@ -1,4 +1,4 @@
-# CSharpGenerator
+# Rusty.CSharpGenerator
 A simple, lightweight generator for C# code, also written in C#.
 
 It is meant to ease maintenance in situations where you have multiple similar scripts with minor differences.
@@ -28,11 +28,11 @@ All types and members can be annotated with attributes and a summary. Inheritanc
 
 The generator does NOT support method implementation generation - these must be provided by the user. The generator makes no attempt to check the semantic correctness of the generated program.
 
-### TODO
+### Planned Features
 - Constructor calling from other constructors
 - Preprocessor directives
-- Records
-- Ref structs
+  - if-endif blocks
+  - regions
 
 ### Usage
 Below is an example of how to generate a simple class.

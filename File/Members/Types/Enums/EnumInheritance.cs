@@ -1,4 +1,4 @@
-﻿namespace CSharpGenerator
+﻿namespace Rusty.CSharpGenerator
 {
     public class EnumInheritance : Generator
     {

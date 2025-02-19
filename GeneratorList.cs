@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpGenerator
+namespace Rusty.CSharpGenerator
 {
     /// <summary>
     /// A generator list.
